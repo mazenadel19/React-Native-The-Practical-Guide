@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "b5443ef2-6ff4-4ff5-82e0-c56891f4db2e"
+      }
+    },
+    "owner": "skywalker1951995"
   }
 }

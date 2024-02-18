@@ -1,91 +1,73 @@
 import { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
-  const [myList, setMyList] = useState([]);
   const [text, setText] = useState("");
+  const [myList, setMyList] = useState([]);
 
-  const handlePress = () => {
-    setMyList((prevList) => [...prevList, text]);
-    setText("");
-  };
+  function changeHandler(enteredText) {
+    setText(enteredText);
+  }
+
+  function pressHandler() {
+    setMyList((state) => [...state, { text, id: Math.random().toString() }]);
+  }
 
   return (
-    <View style={app.container}>
-      <View style={app.inputContainer}>
-        <TextInput
-          style={app.input}
-          placeholder='My Goals ...'
-          onChangeText={(text) => setText(text)}
-          value={text}
-        />
-        <TouchableOpacity style={app.button} title='Add' onPress={handlePress}>
-          <Text style={app.title}>Add</Text>
-        </TouchableOpacity>
+    <View style={styles.appContainer}>
+      <View style={styles.inputContainer}>
+        <TextInput style={styles.textInput} placeholder='Your goals!' onChangeText={changeHandler} />
+        <Button title='Add Goal' onPress={pressHandler} />
       </View>
-      <View>
-        {myList.map((e) => (
-          <View key={e} style={app.listItem}>
-            <View style={app.bulletPoint}></View>
-            <Text style={app.itemText}>{e}</Text>
-          </View>
-        ))}
+      <View style={styles.listContainer}>
+        <FlatList
+          data={myList}
+          renderItem={(itemData) => {
+            return (
+              <View style={styles.listItem}>
+                <Text style={styles.listText}>{itemData.item.text}</Text>
+                keyExtractor={(item) => item.id}
+              </View>
+            );
+          }}
+        />
       </View>
     </View>
   );
 }
 
-const app = StyleSheet.create({
-  container: {
-    padding: 10,
+const styles = StyleSheet.create({
+  appContainer: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    paddingTop: 50,
+    paddingHorizontal: 16,
   },
   inputContainer: {
+    flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    display: "flex",
-    gap: 10,
-  },
-  input: {
-    width: "70%",
-    height: 40,
+    marginBottom: 24,
     borderBottomWidth: 1,
-    padding: 10,
+    borderBottomColor: "#cccccc",
   },
-  button: {
-    backgroundColor: "purple",
-    padding: 10,
-    borderRadius: 5,
-    alignItems: "center",
+  textInput: {
+    borderWidth: 1,
+    borderColor: "#cccccc",
+    width: "70%",
+    marginRight: 8,
+    padding: 8,
   },
-  title: {
-    fontSize: 16,
-    color: "#FFFFFF",
-    fontWeight: "bold",
+  listContainer: {
+    flex: 5,
   },
   listItem: {
-    flexDirection: "row",
-    alignItems: "center",
-    margin: 5,
+    margin: 8,
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: "#5e0acc",
   },
-  bulletPoint: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
-    backgroundColor: "black",
-    marginRight: 5,
-  },
-  itemText: {
-    fontSize: 16,
+  listText: {
+    color: "white",
   },
 });

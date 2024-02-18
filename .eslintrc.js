@@ -5,14 +5,10 @@ module.exports = {
     node: true,
     "react-native/react-native": true,
   },
-  extends: [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:react-native/all",
-  ],
-  overrides: [],
+  extends: ["eslint:recommended", "plugin:react/recommended", "plugin:react-native/all"],
+  overrides: [], // You can add specific overrides here if needed
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 2021, // Specify a specific ECMAScript version
     sourceType: "module",
   },
   plugins: ["react", "react-native"],
@@ -29,6 +25,9 @@ module.exports = {
     "react-native/no-raw-text": "warn",
     "react-native/no-single-element-style-arrays": "warn",
     "react-native/no-extra-semi": "error",
+    "no-undef": "error", // Ensure undefined variables are caught
+    "no-use-before-define": "error", // Ensure variables are defined before use
+    "no-shadow": "error", // Prevent shadowing of variables
     semi: ["error", "always"],
   },
   settings: {

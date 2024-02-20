@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, Modal, StyleSheet, TextInput, View } from "react-native";
+import { GREY } from '../constants';
 
 const GoalInput = ({ addGoalHandler, isModalVisible, onCancel }) => {
   const [enteredGoalText, setEnteredGoalText] = useState("");
@@ -37,27 +38,27 @@ const GoalInput = ({ addGoalHandler, isModalVisible, onCancel }) => {
 export default GoalInput;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 24,
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: "#cccccc",
-  },
-  textInput: {
-    borderWidth: 1,
-    borderColor: "#cccccc",
-    width: "100%",
-    padding: 8,
+  button: {
+    marginHorizontal: 8,
+    width: 100,
   },
   buttonContainer: {
-    marginTop: 16,
     flexDirection: "row",
+    marginTop: 16,
   },
-  button: {
-    width: 100,
-    marginHorizontal: 8,
+  inputContainer: {
+    alignItems: "center",
+    borderBottomColor: GREY,
+    borderBottomWidth: 1,
+    flex: 1,
+    justifyContent: "center",
+    marginBottom: 24,
+    padding: 16,
+  },
+  textInput: {
+    borderColor: GREY,
+    borderWidth: 1,
+    padding: 8,
+    width: "100%",
   },
 });

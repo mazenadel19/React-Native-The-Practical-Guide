@@ -1,47 +1,53 @@
-import { useState } from 'react';
-import { Button, FlatList, StyleSheet, View } from 'react-native';
-import GoalInput from './components/GoalInput';
-import GoalItem from './components/GoalItem';
-import { LIGHT_PURPLE } from './constants';
+import { useState } from 'react'
+import { Button, FlatList, StyleSheet, View } from 'react-native'
+import GoalInput from './components/GoalInput'
+import GoalItem from './components/GoalItem'
+import { LIGHT_PURPLE } from './constants'
 
 export default function App() {
-  const [courseGoals, setCourseGoals] = useState([]);
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [courseGoals, setCourseGoals] = useState([])
+  const [isModalVisible, setIsModalVisible] = useState(false)
 
   function openModal() {
-    setIsModalVisible(true);
+    setIsModalVisible(true)
   }
 
   function closeModal() {
-    setIsModalVisible(false);
+    setIsModalVisible(false)
   }
 
   function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentCourseGoals) => [
       ...currentCourseGoals,
       { text: enteredGoalText, id: Math.random().toString() },
-    ]);
-    closeModal();
+    ])
+    closeModal()
   }
 
   function removeItem(id) {
-    setCourseGoals((list) => list.filter((item) => item.id !== id));
+    setCourseGoals((list) => list.filter((item) => item.id !== id))
   }
 
   return (
     <View style={styles.appContainer}>
-      <Button title='Add Goal' onPress={openModal} color={LIGHT_PURPLE} />
-      <GoalInput addGoalHandler={addGoalHandler} isModalVisible={isModalVisible} onCancel={closeModal} />
+      <Button title="Add Goal" onPress={openModal} color={LIGHT_PURPLE} />
+      <GoalInput
+        addGoalHandler={addGoalHandler}
+        isModalVisible={isModalVisible}
+        onCancel={closeModal}
+      />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}
-          renderItem={(itemData) => <GoalItem item={itemData.item} removeItem={removeItem} />}
+          renderItem={(itemData) => (
+            <GoalItem item={itemData.item} removeItem={removeItem} />
+          )}
           keyExtractor={(item, index) => item.id}
           alwaysBounceVertical={false}
         />
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -53,4 +59,4 @@ const styles = StyleSheet.create({
   goalsContainer: {
     flex: 5,
   },
-});
+})

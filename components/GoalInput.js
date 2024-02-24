@@ -28,17 +28,13 @@ const GoalInput = ({ addGoalHandler, isModalVisible, onCancel }) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button
-              title="Cancel"
-              color={colors.appCancel}
-              onPress={onCancel}
-            />
+            <Button title="Cancel" color={colors.pink} onPress={onCancel} />
           </View>
           <View style={styles.button}>
             <Button
               title="Add Goal"
               onPress={() => onAddGoal(enteredGoalText)}
-              color={colors.appSubmit}
+              color={colors.veryLightPurple}
             />
           </View>
         </View>

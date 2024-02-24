@@ -9,7 +9,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "android-shake": "adb shell input keyevent 82",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "expo": "^50.0.0",

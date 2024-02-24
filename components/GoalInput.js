@@ -1,41 +1,53 @@
-import { useState } from "react";
-import { Button, Modal, StyleSheet, TextInput, View } from "react-native";
-import { GREY } from '../constants';
+import { useState } from 'react'
+import { Button, Image, Modal, StyleSheet, TextInput, View } from 'react-native'
+import goalImg from '../assets/images/goal.png'
+import { colors } from '../constants'
 
 const GoalInput = ({ addGoalHandler, isModalVisible, onCancel }) => {
-  const [enteredGoalText, setEnteredGoalText] = useState("");
+  const [enteredGoalText, setEnteredGoalText] = useState('')
 
   function goalInputHandler(enteredText) {
-    setEnteredGoalText(enteredText);
+    setEnteredGoalText(enteredText)
   }
   function onAddGoal(enteredGoalText) {
-    addGoalHandler(enteredGoalText);
-    setEnteredGoalText("");
+    if (enteredGoalText === '') return
+
+    addGoalHandler(enteredGoalText)
+    setEnteredGoalText('')
   }
 
   return (
-    <Modal visible={isModalVisible} animationType='slide'>
+    <Modal visible={isModalVisible} animationType="slide">
       <View style={styles.inputContainer}>
+        <Image source={goalImg} alt="Goal Image" style={styles.image} />
         <TextInput
           onChangeText={goalInputHandler}
-          placeholder='Your course goal!'
+          placeholder="Your day goal!"
           style={styles.textInput}
           value={enteredGoalText}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title='Add Goal' onPress={() => onAddGoal(enteredGoalText)} />
+            <Button
+              title="Cancel"
+              color={colors.appCancel}
+              onPress={onCancel}
+            />
           </View>
           <View style={styles.button}>
-            <Button title='Cancel' onPress={onCancel} />
+            <Button
+              title="Add Goal"
+              onPress={() => onAddGoal(enteredGoalText)}
+              color={colors.appSubmit}
+            />
           </View>
         </View>
       </View>
     </Modal>
-  );
-};
+  )
+}
 
-export default GoalInput;
+export default GoalInput
 
 const styles = StyleSheet.create({
   button: {
@@ -43,22 +55,29 @@ const styles = StyleSheet.create({
     width: 100,
   },
   buttonContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     marginTop: 16,
   },
+  image: {
+    height: 100,
+    margin: 20,
+    width: 100,
+  },
   inputContainer: {
-    alignItems: "center",
-    borderBottomColor: GREY,
-    borderBottomWidth: 1,
+    alignItems: 'center',
+    backgroundColor: colors.darkPurple,
+    borderBottomColor: colors.grey,
     flex: 1,
-    justifyContent: "center",
-    marginBottom: 24,
+    justifyContent: 'center',
     padding: 16,
   },
   textInput: {
-    borderColor: GREY,
+    backgroundColor: colors.grey,
+    borderColor: colors.grey,
+    borderRadius: 6,
     borderWidth: 1,
-    padding: 8,
-    width: "100%",
+    color: colors.darkBlue,
+    padding: 16,
+    width: '100%',
   },
-});
+})

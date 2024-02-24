@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Button, FlatList, StyleSheet, View } from 'react-native'
 import GoalInput from './components/GoalInput'
 import GoalItem from './components/GoalItem'
-import { LIGHT_PURPLE } from './constants'
+import { colors } from './constants'
 
 export default function App() {
   const [courseGoals, setCourseGoals] = useState([])
@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <View style={styles.appContainer}>
-      <Button title="Add Goal" onPress={openModal} color={LIGHT_PURPLE} />
+      <Button title="Add Goal" onPress={openModal} color={colors.lightPurple} />
       <GoalInput
         addGoalHandler={addGoalHandler}
         isModalVisible={isModalVisible}

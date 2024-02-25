@@ -9,7 +9,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "android-shake": "adb shell input keyevent 82",
-    "prepare": "husky"
+    "prepare": "husky",
+    "devtools": "react-devtools"
   },
   "dependencies": {
     "expo": "^50.0.0",
@@ -27,7 +28,8 @@
     "eslint-plugin-react-native": "^4.1.0",
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "react-devtools": "^5.0.0"
   },
   "private": true,
   "lint-staged": {

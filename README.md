@@ -7,10 +7,11 @@ This is the code for Maximilian Schwarzmüller [React Native course](https://www
 ## Projects
 
 1. [GOALS APP](https://github.com/mazenadel19/React-Native-The-Practical-Guide/tree/Goals-App)
+2. [GUESS MY NUMBER APP](https://github.com/mazenadel19/React-Native-The-Practical-Guide/tree/app/guess-my-number)
 
 ## How to Use
 
-Each section and project has its own branch in this repository. You can navigate to the respective branch to access the code and resources related to that section or project.
+Each section and project has its branch in this repository. You can navigate to the respective branch to access the code and resources related to that section or project.
 
 ## Acknowledgements
 

@@ -7,7 +7,7 @@ Learning about React Native Basics while building a Simple TODO List App
 - open terminal
 - git clone `https://github.com/mazenadel19/React-Native-The-Practical-Guide.git`
 - cd React-Native-The-Practical-Guide
-- `git switch Goals-App`
+- `git switch app/goals`
 - `npm i`
 - `npm start`
 
